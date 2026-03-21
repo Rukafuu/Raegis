@@ -8,7 +8,7 @@
   <img src="https://img.shields.io/github/v/release/Rukafuu/Raegis?style=for-the-badge&logo=github&color=7c3aed" alt="Releases">
 </p>
 
-# Raegis 🔬
+# Raegis 🔬 `v0.1.2`
 
 > **The stethoscope for your local LLMs** — behavioral diagnostics, hallucination detection, and RAG / Fine-tuning validation.
 
@@ -33,6 +33,7 @@ AI development is often a "black box" once you move past Temperature 0.0. Raegis
 3. **Whitebox Inspector**: Extracts true token-level entropy using direct logprobs APIs (Ollama) or model tensors (HuggingFace transformers), yielding 100x faster insights than blackbox behavioral inference.
 4. **Before/After Comparator**: The ultimate MLOps tool for Fine-tuning validation. Calculates the Confidence Delta and the *Personality Drift*.
 5. **Guardian (Neural Autoencoder)**: Detects anomalies in high-temperature outputs using TensorFlow/Keras (with Scikit-Learn as a lightweight fallback).
+6. **LLM-as-a-Judge (New in v0.1.2)**: Advanced RAG evaluation using async Faithfulness ( factual fidelity) and Contextual Precision metrics, inspired by the Ragas framework but implemented natively for privacy-first local Ollama environments.
 
 ## Installation
 
