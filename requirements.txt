@@ -8,6 +8,8 @@ plotly>=5.20.0
 # LLM local
 langchain>=0.2.0
 langchain-ollama>=0.1.0
+aiohttp>=3.9.0
+requests>=2.31.0
 
 # Vetorização e álgebra
 scikit-learn>=1.4.0

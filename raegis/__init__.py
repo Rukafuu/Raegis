@@ -13,8 +13,9 @@ from .anchor             import RaegisAnchor
 from .comparator         import Comparator
 from .report             import RaegisReport, AnchorReport, DeltaReport
 from .core.inspector     import WhiteboxInspector
+from .core.judge         import RaegisJudge
 
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 
 __all__ = [
     "Auditor",
@@ -24,4 +25,5 @@ __all__ = [
     "AnchorReport",
     "DeltaReport",
     "WhiteboxInspector",
+    "RaegisJudge",
 ]

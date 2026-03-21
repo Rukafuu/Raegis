@@ -165,6 +165,29 @@ class Auditor:
         resp.raise_for_status()
         return resp.json().get("response", "").strip()
 
+    def judge_rag(self, question: str, contexts: list[str], answer: str):
+        """
+        Evolves RAG audit using RaegisJudge (Faithfulness & Precision).
+        This is a synchronous wrapper for the async Judge metrics.
+        """
+        import asyncio
+        from raegis.core.judge import RaegisJudge
+        
+        judge = RaegisJudge(self)
+        
+        async def run_metrics():
+            # Join contexts for faithfulness check
+            full_context = "\n---\n".join(contexts)
+            f_report = await judge.faithfulness(question, full_context, answer)
+            cp_score = await judge.contextual_precision(question, contexts)
+            return f_report, cp_score
+
+        f_report, cp_score = asyncio.run(run_metrics())
+        return {
+            "faithfulness": f_report,
+            "contextual_precision": cp_score
+        }
+
     # ------------------------------------------------------------------
     # Dunder
     # ------------------------------------------------------------------
