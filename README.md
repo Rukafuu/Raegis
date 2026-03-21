@@ -130,11 +130,42 @@ print(df) # Exact Shannon entropy and P(top token) per temperature step
 # Allows operations like insp.attention_snapshot() to read actual attention head maps
 ```
 
+### 4. LLM-as-a-Judge (v0.1.2+)
+Evaluate RAG performance with high precision using LLM-based metrics.
+
+```python
+from raegis import Auditor
+
+auditor = Auditor("llama3.2")
+pergunta = "Qual a função do Raegis?"
+contextos = ["Raegis é um framework de auditoria para LLMs."]
+resposta = "O Raegis é uma ferramenta de diagnóstico para modelos."
+
+# Full evaluation (Faithfulness + Context Precision)
+results = auditor.judge_rag(pergunta, contextos, resposta)
+
+print(f"Faithfulness: {results['faithfulness']['score']}")
+```
+
+---
+
 ## Open Source Architecture
 
 - `auditor.py` orchestrates asynchronous parallel collection;
 - `anchor.py` handles RAG evaluation logic; 
+- `core/judge.py` implements advanced LLM-as-a-judge metrics;
 - `comparator.py` performs before/after drift analysis;
 - `core/guardian.py` trains the unsupervised anomaly autoencoder on-the-fly;
 
 The default blackbox calls are designed as lightweight REST requests strictly aimed at Ollama's default endpoint (`11434`), avoiding the immense bloated overheads associated with generic abstraction libraries like LangChain.
+
+## Changelog
+
+- **v0.1.2**: Initial release of **RaegisJudge**. Added support for async `Faithfulness` and `Contextual Precision` metrics. Optimized for local Ollama via `aiohttp`.
+- **v0.1.1**: Initial open-source release. Behavioral diagnostics and semantic anchor tests.
+
+## License
+
+Apache License 2.0. See `LICENSE` for more information.
+
+Built by **Lucas Frischeisen**. [LinkedIn](https://linkedin.com/in/rukafuu)
