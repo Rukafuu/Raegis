@@ -1,0 +1,5 @@
+{
+  "name": "Raegis - The LLM Stethoscope",
+  "description": "Open-source framework for auditing hallucinations, entropy, and bias in local LLMs.",
+  "requestFramePermissions": []
+}
