@@ -8,9 +8,13 @@
   <img src="https://img.shields.io/github/v/release/Rukafuu/Raegis?style=for-the-badge&logo=github&color=7c3aed" alt="Releases">
 </p>
 
-# Raegis 🔬 `v0.1.2`
+# 🩺 RAEGIS: The Stethoscope for LLMs
 
-> **The stethoscope for your local LLMs** — behavioral diagnostics, hallucination detection, and RAG / Fine-tuning validation.
+[![Apache 2.0 License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Python & JS Native](https://img.shields.io/badge/Dual--Core-Python%2BJS-orange.svg)]()
+[![TensorFlow.js](https://img.shields.io/badge/Neural-TF.js-FF6F00.svg)](https://www.tensorflow.org/js)
+
+**Raegis Audit Protocol** is an open-source diagnostic layer for local LLMs (Gemma, Llama, Gemini). Now with **Native JavaScript (Node.js/Web)** and **TensorFlow.js** support for high-fidelity neural auditing.
 
 Raegis tests your model by running the same prompt across a temperature ramp (e.g., `0.0` to `1.5`), measuring internal consistency (TF-IDF/Cosine) and vocabulary diversity (Shannon Entropy). With this data, it fingerprints the model’s personality, defines the **hallucination breaking point**, audits **RAG pipelines**, and compares **Personality Drift** after fine-tuning.
 
@@ -63,7 +67,34 @@ ollama serve
 python -m streamlit run app.py
 ```
 
-## Python API Usage
+## 🚀 Usage (JavaScript / Node.js)
+
+Since **v0.1.0**, Raegis is available as a native JS library with **TensorFlow.js** integration.
+
+```typescript
+import { Raegis } from './src/raegis/Raegis';
+
+const raegis = new Raegis(YOUR_API_KEY);
+
+// Full Audit (Temperature Sweep + Neural Anomaly Detection)
+const audit = await raegis.fullAudit({
+  model: "gemini-1.5-flash",
+  prompt: "Audit me!",
+  temperatures: [0.0, 0.7, 1.2, 1.5]
+});
+
+console.log(`Rupture Point: ${audit.rupturePoint}`);
+```
+
+### 📡 Raegis JS Audit Server
+You can also run Raegis as a standalone REST API for your Gemma demos:
+```bash
+npx tsx src/raegis/RaegisServer.ts
+```
+
+---
+
+## 🚀 Usage (Python API)
 
 ### 1. Behavioral Diagnostics
 ```python

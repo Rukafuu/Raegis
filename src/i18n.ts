@@ -10,7 +10,7 @@ export const translations = {
     },
     hero: {
       title: "Raegis: The Stethoscope for Home-Grown LLMs",
-      subtitle: "Hallucination, bias, and entropy control for local models using Keras and Scikit-learn. Privacy-first, no paid APIs.",
+      subtitle: "Hallucination, bias, and entropy control for local models. Now with Native JS and TensorFlow.js support! No paid APIs.",
       ctaRepo: "Access Repository",
       ctaDocs: "Quick Start"
     },
@@ -23,8 +23,8 @@ export const translations = {
           badge: "INPUT"
         },
         {
-          title: "Raegis Guardian",
-          desc: "Keras Autoencoder detecting neural anomalies via reconstruction error analysis.",
+          title: "Raegis Guardian (JS+TF.js)",
+          desc: "Keras/TF.js Autoencoder detecting neural anomalies via reconstruction error analysis.",
           badge: "ANALYSIS"
         },
         {
@@ -103,7 +103,7 @@ export const translations = {
     },
     hero: {
       title: "Raegis: O Estetoscópio para LLMs Caseiros",
-      subtitle: "Controle de alucinação, viés e entropia para modelos locais usando Keras e Scikit-learn. Privacy-first, sem APIs pagas.",
+      subtitle: "Controle de alucinação, viés e entropia. Agora com suporte nativo a JS e TensorFlow.js! Privacy-first, sem APIs pagas.",
       ctaRepo: "Acessar Repositório",
       ctaDocs: "Como Começar"
     },
@@ -116,8 +116,8 @@ export const translations = {
           badge: "INPUT"
         },
         {
-          title: "Raegis Guardian",
-          desc: "Autoencoder (Keras) detectando anomalias neurais via erro de reconstrução.",
+          title: "Raegis Guardian (JS+TF.js)",
+          desc: "Autoencoder Neural (TensorFlow.js) detectando anomalias via erro de reconstrução local.",
           badge: "ANÁLISE"
         },
         {

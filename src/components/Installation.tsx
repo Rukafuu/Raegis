@@ -62,9 +62,14 @@ export const Installation = ({ t }: InstallationProps) => {
                     {tier.label}
                   </div>
                   <div className="relative group/code flex items-center bg-slate-950/80 p-4 rounded-xl border border-white/5 font-mono text-[12px] text-slate-300">
-                    <span className="text-cyan-neon mr-3">$</span>
-                    <span className="flex-1 truncate">{tier.cmd}</span>
-                    <CopyButton text={tier.cmd} />
+                    <div className="flex flex-col gap-1">
+                      <span className="text-cyan-neon"># Installation (Python)</span>
+                      <span>pip install raegis</span>
+                    </div>
+                    <div className="flex flex-col gap-1 mt-4">
+                      <span className="text-emerald-400"># Installation (JS / Node.js)</span>
+                      <span>npm install @tensorflow/tfjs @google/genai</span>
+                    </div>
                   </div>
                   <div className="mt-3 text-[10px] text-slate-600 font-mono italic">{tier.desc}</div>
                 </div>

@@ -214,11 +214,11 @@ export default function App() {
               <div key={i} className="flex items-center gap-16 text-xs font-mono font-black text-slate-700 uppercase tracking-[0.6em]">
                 <span className="text-white">Python 3.10+</span>
                 <span className="text-cyan-neon/30">•</span>
+                <span className="text-white">Node.js 18+</span>
+                <span className="text-cyan-neon/30">•</span>
+                <span className="text-white">TensorFlow.js</span>
+                <span className="text-cyan-neon/30">•</span>
                 <span className="text-white">Keras 3.0</span>
-                <span className="text-cyan-neon/30">•</span>
-                <span className="text-white">Scikit-Learn</span>
-                <span className="text-cyan-neon/30">•</span>
-                <span className="text-white">Pandas</span>
                 <span className="text-cyan-neon/30">•</span>
                 <span className="text-white">Ollama API</span>
                 <span className="text-cyan-neon/30">•</span>
