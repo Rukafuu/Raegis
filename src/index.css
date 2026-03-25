@@ -52,6 +52,10 @@
   text-shadow: 0 0 8px rgba(0, 243, 255, 0.4);
 }
 
+.emerald-text-glow {
+  text-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
+}
+
 .glass-morphism {
   @apply backdrop-blur-xl bg-slate-900/40 border border-white/10;
 }

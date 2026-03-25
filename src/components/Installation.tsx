@@ -6,10 +6,12 @@ import { Tooltip } from './Tooltip';
 
 interface InstallationProps {
   t: any;
+  activeCore: 'python' | 'js';
+  setActiveCore: (core: 'python' | 'js') => void;
 }
 
-export const Installation = ({ t }: InstallationProps) => {
-  const [activeTab, setActiveTab] = useState<'python' | 'js'>('python');
+export const Installation = ({ t, activeCore, setActiveCore }: InstallationProps) => {
+  const activeTab = activeCore;
 
   const pythonTiers = [
     { label: "Base (Lightweight)", cmd: "pip install raegis", desc: "Minimal dependencies" },
@@ -45,14 +47,14 @@ export const Installation = ({ t }: InstallationProps) => {
       <div className="flex justify-center mb-24">
         <div className="p-1.5 bg-slate-900/80 border border-white/10 rounded-2xl backdrop-blur-xl flex gap-1 relative z-20">
           <button
-            onClick={() => setActiveTab('python')}
+            onClick={() => setActiveCore('python')}
             className={`flex items-center gap-3 px-8 py-4 rounded-xl text-sm font-black transition-all ${activeTab === 'python' ? 'bg-cyan-neon text-slate-950 shadow-[0_0_30px_rgba(0,243,255,0.4)]' : 'text-slate-500 hover:text-white'}`}
           >
             <Github size={18} />
             PYTHON_CORE
           </button>
           <button
-            onClick={() => setActiveTab('js')}
+            onClick={() => setActiveCore('js')}
             className={`flex items-center gap-3 px-8 py-4 rounded-xl text-sm font-black transition-all ${activeTab === 'js' ? 'bg-emerald-500 text-slate-950 shadow-[0_0_30px_rgba(16,185,129,0.4)]' : 'text-slate-500 hover:text-white'}`}
           >
             <Code2 size={18} />

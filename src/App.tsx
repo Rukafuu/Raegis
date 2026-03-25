@@ -6,7 +6,8 @@ import {
   Github, 
   Linkedin,
   Activity,
-  Cpu
+  Cpu,
+  Code2
 } from 'lucide-react';
 
 // Components
@@ -22,6 +23,7 @@ import { translations, Language } from './i18n';
 
 export default function App() {
   const [lang, setLang] = useState<Language>('en');
+  const [activeCore, setActiveCore] = useState<'python' | 'js'>('python');
   const t = translations[lang];
 
   // Auto-set language based on navigator
@@ -97,6 +99,24 @@ export default function App() {
               ))}
             </div>
 
+            {/* Core Switcher */}
+            <div className="flex items-center gap-2 px-3 py-1.5 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-md">
+              <button
+                onClick={() => setActiveCore('python')}
+                className={`text-[9px] font-black uppercase transition-all px-4 py-1.5 rounded-xl flex items-center gap-2 ${activeCore === 'python' ? 'bg-cyan-neon text-slate-950 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
+              >
+                <Cpu size={12} />
+                Python
+              </button>
+              <button
+                onClick={() => setActiveCore('js')}
+                className={`text-[9px] font-black uppercase transition-all px-4 py-1.5 rounded-xl flex items-center gap-2 ${activeCore === 'js' ? 'bg-emerald-500 text-slate-950 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
+              >
+                <Code2 size={12} />
+                JS/TS
+              </button>
+            </div>
+
             <div className="h-4 w-px bg-white/10 mx-2" />
             <a href="https://linkedin.com/in/rukafuu" target="_blank" rel="noopener noreferrer" className="p-2 text-slate-400 hover:text-cyan-neon transition-colors">
               <Linkedin size={20} />
@@ -110,7 +130,7 @@ export default function App() {
 
       <main className="relative pt-44 z-10">
         
-        <Hero t={t} />
+        <Hero t={t} activeCore={activeCore} />
 
         {/* Why Raegis Curve Section */}
         <section className="max-w-7xl mx-auto px-6 py-32 border-t border-white/5">
@@ -229,7 +249,7 @@ export default function App() {
           </div>
         </section>
 
-        <Installation t={t} />
+        <Installation t={t} activeCore={activeCore} setActiveCore={setActiveCore} />
 
         {/* Architecture Large Card */}
         <section className="max-w-7xl mx-auto px-6 py-32 border-t border-white/5">
