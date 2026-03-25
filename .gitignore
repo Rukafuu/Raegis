@@ -25,3 +25,11 @@ dist/
 # Marketing/Redesign
 landing/
 
+# Node.js
+node_modules/
+dist/
+.env
+.parcel-cache
+.cache
+.DS_Store
+*.log
