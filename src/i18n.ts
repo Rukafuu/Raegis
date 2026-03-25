@@ -73,12 +73,20 @@ export const translations = {
         { title: "4. Whitebox / Graybox Inspector", desc: "Instead of generating multiple text responses and comparing them (blackbox inference), the Inspector directly accesses the LLM's internal token probabilities in a single forward pass.", tooltip: "Direct access to token probabilities for 100x faster auditing." }
       ]
     },
+    jsUsage: {
+      title: "JavaScript / Node.js API",
+      sections: [
+        { title: "1. Native Port", desc: "Native TypeScript implementation with no Python dependency.", tooltip: "Lightweight and high-performance." },
+        { title: "2. TensorFlow.js Integration", desc: "Run neural anomaly detection directly in the browser or Node.js.", tooltip: "Hardware-accelerated auditing via TF.js." },
+        { title: "3. Raegis Server", desc: "Run as a standalone REST API for your Gemma or Llama demos.", tooltip: "Ready-to-use backend service." }
+      ]
+    },
     architecture: {
       title: "Open Source Architecture",
       items: [
         "auditor.py orchestrates asynchronous parallel collection",
-        "anchor.py handles RAG evaluation logic",
-        "comparator.py performs before/after drift analysis",
+        "src/raegis/Raegis.ts native port of the heartbeat logic",
+        "src/raegis/RaegisServer.ts standalone JS API service",
         "core/guardian.py trains the unsupervised anomaly autoencoder on-the-fly"
       ]
     },
@@ -166,12 +174,20 @@ export const translations = {
         { title: "4. Inspetor Whitebox / Graybox", desc: "Em vez de gerar várias respostas de texto e compará-las (inferência de caixa preta), o Inspetor acessa diretamente as probabilidades internas de token do LLM em uma única passagem direta.", tooltip: "Acesso direto às probabilidades de token para auditoria 100x mais rápida." }
       ]
     },
+    jsUsage: {
+      title: "API JavaScript / Node.js",
+      sections: [
+        { title: "1. Port Nativo", desc: "Implementação nativa em TypeScript sem dependência de Python.", tooltip: "Leve e de alta performance." },
+        { title: "2. Integração TensorFlow.js", desc: "Execute detecção de anomalias neurais direto no browser ou Node.js.", tooltip: "Auditoria acelerada por hardware via TF.js." },
+        { title: "3. Raegis Server", desc: "Execute como uma API REST independente para seus demos de Gemma ou Llama.", tooltip: "Serviço de backend pronto para uso." }
+      ]
+    },
     architecture: {
       title: "Arquitetura de Código Aberto",
       items: [
         "auditor.py orquestra a coleta paralela assíncrona",
-        "anchor.py lida com a lógica de avaliação de RAG",
-        "comparator.py realiza análise de desvio antes/depois",
+        "src/raegis/Raegis.ts port nativo da lógica do protocolo",
+        "src/raegis/RaegisServer.ts serviço de API JS independente",
         "core/guardian.py treina o autoencoder de anomalia não supervisionado on-the-fly"
       ]
     },
