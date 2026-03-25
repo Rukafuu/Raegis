@@ -20,12 +20,43 @@ export class Raegis {
 
   /**
    * Run a full audit and audit report
+   * Supports local JS audit or Bridge to Python HQ Station
    */
   async fullAudit(options: AuditOptions): Promise<{ 
     results: AuditResult[], 
     anomalies: string[], 
     rupturePoint: number | null 
   }> {
+    // BRIDGE MODE: Delegate to Python HQ Station if bridgeUrl is provided
+    if (options.bridgeUrl) {
+      console.log("Raegis-JS: Delegating to Scientific HQ Station @ " + options.bridgeUrl);
+      const hqResponse = await fetch(`${options.bridgeUrl}/audit/behavioral`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-API-Key': options.bridgeKey || ""
+        },
+        body: JSON.stringify({
+          prompt: options.prompt,
+          model_name: options.model,
+          temperatures: options.temperatures,
+          depth: options.samplesPerTemperature
+        })
+      });
+
+      if (!hqResponse.ok) {
+        throw new Error(`HQ Station error: ${hqResponse.statusText}`);
+      }
+
+      const hqData = await hqResponse.json();
+      return {
+        results: [], // TODO: Map HQ results back to AuditResult[]
+        anomalies: hqData.anomalies || [],
+        rupturePoint: hqData.rupture_point
+      };
+    }
+
+    // LOCAL MODE: Native JS Implementation
     const results = await this.auditor.audit(options);
     const anomalies = this.guardian.detectAnomaly(results);
     

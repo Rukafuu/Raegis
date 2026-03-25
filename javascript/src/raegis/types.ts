@@ -3,6 +3,8 @@ export interface AuditOptions {
   prompt: string;
   temperatures: number[];
   samplesPerTemperature: number;
+  bridgeUrl?: string;
+  bridgeKey?: string;
 }
 
 export interface AuditResult {

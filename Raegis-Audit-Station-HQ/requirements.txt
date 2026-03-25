@@ -1,0 +1,15 @@
+fastapi
+uvicorn[standard]
+pydantic
+aiohttp
+python-dotenv
+# Scientific Core
+tensorflow
+sentence-transformers
+scikit-learn
+pandas
+numpy
+# For Whitebox (Jason's weights)
+transformers
+torch
+accelerate
