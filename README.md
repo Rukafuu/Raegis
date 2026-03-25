@@ -35,6 +35,19 @@ AI development is often a "black box" once you move past Temperature 0.0. Raegis
 5. **Guardian (Neural Autoencoder)**: Detects anomalies in high-temperature outputs using TensorFlow/Keras (with Scikit-Learn as a lightweight fallback).
 6. **LLM-as-a-Judge (New in v0.1.2)**: Advanced RAG evaluation using async Faithfulness ( factual fidelity) and Contextual Precision metrics, inspired by the Ragas framework but implemented natively for privacy-first local Ollama environments.
 
+## 📐 Dual-Core Architecture
+
+Raegis provides two parallel but semantically equivalent implementations:
+
+| Feature | Python Core (`pip`) | JavaScript Core (`npm`) |
+| :--- | :--- | :--- |
+| **Logic** | Asynchronous `aiohttp` | Native `fetch` / `Google GenAI` |
+| **Neural** | Keras / TensorFlow | TensorFlow.js (TF.js) |
+| **Visualization** | Streamlit Dashboard | React / Vite Dashboard |
+| **Usage** | Production Pipelines | Demos, Edge & Web Apps |
+
+---
+
 ## Installation
 
 Raegis provides dependency tiers with optional extras tailored to lightweight or heavy-duty environments:
@@ -145,6 +158,38 @@ resposta = "O Raegis é uma ferramenta de diagnóstico para modelos."
 results = auditor.judge_rag(pergunta, contextos, resposta)
 
 print(f"Faithfulness: {results['faithfulness']['score']}")
+```
+
+---
+
+## 🚀 Native JavaScript / TypeScript Usage
+
+Raegis provides a native implementation for JS/TS environments.
+
+### 1. Library Usage
+```typescript
+import { Raegis } from './src/raegis/Raegis';
+
+const raegis = new Raegis(YOUR_API_KEY);
+
+// Full Audit (Temperature Sweep + Neural Anomaly Detection)
+const audit = await raegis.fullAudit({
+  model: "gemini-1.5-flash",
+  prompt: "Audit me!",
+  temperatures: [0.0, 0.7, 1.2, 1.5]
+});
+
+console.log(`Rupture Point: ${audit.rupturePoint}`);
+```
+
+### 2. Standalone Audit Server
+Run Raegis as a REST API for your Gemma or Llama demos:
+```bash
+# Install NPM dependencies
+npm install
+
+# Run the server
+npx tsx src/raegis/RaegisServer.ts
 ```
 
 ---
