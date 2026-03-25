@@ -1,4 +1,4 @@
-# Raegis 🔬 `v0.1.2`
+# Raegis 🔬 `v0.1.3`
 
 > **The stethoscope for your local LLMs** — behavioral diagnostics, hallucination detection, and RAG / Fine-tuning validation.
 
