@@ -7,7 +7,9 @@ import {
   Linkedin,
   Activity,
   Cpu,
-  Code2
+  Code2,
+  ChevronDown,
+  ChevronUp
 } from 'lucide-react';
 
 // Components
@@ -24,6 +26,7 @@ import { translations, Language } from './i18n';
 export default function App() {
   const [lang, setLang] = useState<Language>('en');
   const [activeCore, setActiveCore] = useState<'python' | 'js'>('python');
+  const [expandedChangelog, setExpandedChangelog] = useState<string | null>(null);
   const t = translations[lang];
 
   // Auto-set language based on navigator
@@ -269,15 +272,37 @@ export default function App() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: idx * 0.1 }}
-                    className="glass-morphism p-8 rounded-3xl border border-white/5 hover:border-cyan-neon/30 transition-all group"
+                    onClick={() => setExpandedChangelog(expandedChangelog === item.version ? null : item.version)}
+                    className={`glass-morphism p-8 rounded-3xl border border-white/5 hover:border-cyan-neon/30 transition-all group cursor-pointer ${expandedChangelog === item.version ? 'border-cyan-neon/40 ring-1 ring-cyan-neon/20' : ''}`}
                  >
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                        <div className="flex items-center gap-4">
                           <span className="text-2xl font-black text-white group-hover:text-cyan-neon transition-colors">v{item.version}</span>
                           <span className="px-3 py-1 bg-white/5 rounded-full text-[10px] font-mono text-slate-500 uppercase tracking-widest">{item.date}</span>
                        </div>
-                       <p className="text-slate-400 font-medium">{item.desc}</p>
+                       <div className="flex items-center gap-6">
+                          <p className="text-slate-400 font-medium">{item.desc}</p>
+                          {expandedChangelog === item.version ? <ChevronUp className="text-cyan-neon" /> : <ChevronDown className="text-slate-600 group-hover:text-cyan-neon transition-colors" />}
+                       </div>
                     </div>
+                    
+                    <AnimatePresence>
+                       {expandedChangelog === item.version && (
+                          <motion.div 
+                             initial={{ height: 0, opacity: 0 }}
+                             animate={{ height: 'auto', opacity: 1 }}
+                             exit={{ height: 0, opacity: 0 }}
+                             className="overflow-hidden"
+                          >
+                             <div className="mt-8 p-6 bg-slate-950/50 rounded-2xl border border-white/5 font-mono text-sm overflow-x-auto">
+                                <span className="text-cyan-neon/40 text-[10px] block mb-4 uppercase tracking-widest">// Quick_Snapshot</span>
+                                <pre className="text-slate-300">
+                                   <code>{item.snippet}</code>
+                                </pre>
+                             </div>
+                          </motion.div>
+                       )}
+                    </AnimatePresence>
                  </motion.div>
               ))}
            </div>

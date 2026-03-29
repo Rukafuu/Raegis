@@ -39,7 +39,7 @@ export const HowItWorks = ({ t }: HowItWorksProps) => {
           viewport={{ once: true }}
           className="text-slate-500 text-sm font-mono max-w-xs leading-relaxed border-l-2 border-cyan-neon/30 pl-4"
         >
-          Auditing neural pathways to ensure deterministic reliability in stochastic environments.
+          {t.howItWorks.subtitle}
         </motion.div>
       </div>
 

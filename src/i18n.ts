@@ -16,6 +16,7 @@ export const translations = {
     },
     howItWorks: {
       title: "Diagnostic Pipeline",
+      subtitle: "Auditing neural pathways to ensure deterministic reliability in stochastic environments.",
       steps: [
         {
           title: "Adversarial Stress",
@@ -93,8 +94,18 @@ export const translations = {
     changelog: {
       title: "Changelog",
       items: [
-        { version: "2.0.0", date: "2026-03-29", desc: "The Diagnostic Overhaul: Drift, SHAP, Stress Test, Truth Anchor." },
-        { version: "1.0.0", date: "2026-03-25", desc: "Initial dual-core release (Python + JS Support)." }
+        { 
+          version: "2.0.0", 
+          date: "2026-03-29", 
+          desc: "The Diagnostic Overhaul: Drift, SHAP, Stress Test, Truth Anchor.",
+          snippet: "from raegis.drift import DriftMonitor\n\nmonitor = DriftMonitor(model_path='fraud_model.xgb')\nresults = monitor.run_simulation(weeks=12)\nprint(f'PSI Drift: {results.psi}')"
+        },
+        { 
+          version: "1.0.0", 
+          date: "2026-03-25", 
+          desc: "Initial dual-core release (Python + JS Support).",
+          snippet: "const auditor = new Raegis.Auditor({ model: 'gemma' });\nconst report = await auditor.audit('Hello World');"
+        }
       ]
     },
     contact: {
@@ -124,6 +135,7 @@ export const translations = {
     },
     howItWorks: {
       title: "Pipeline de Diagnóstico",
+      subtitle: "Auditando caminhos neurais para garantir confiabilidade determinística em ambientes estocásticos.",
       steps: [
         {
           title: "Stress Adversarial",
@@ -201,8 +213,18 @@ export const translations = {
     changelog: {
       title: "Changelog",
       items: [
-        { version: "2.0.0", date: "2026-03-29", desc: "Overhaul de Diagnósticos: Drift, SHAP, Stress Test, Truth Anchor." },
-        { version: "1.0.0", date: "2026-03-25", desc: "Lançamento dual-core inicial (Suporte Python + JS)." }
+        { 
+          version: "2.0.0", 
+          date: "2026-03-29", 
+          desc: "Overhaul de Diagnósticos: Drift, SHAP, Stress Test, Truth Anchor.",
+          snippet: "from raegis.drift import DriftMonitor\n\n# Diagnóstico de Drift em Produção\nmonitor = DriftMonitor()\nmonitor.run_simulation()"
+        },
+        { 
+          version: "1.0.0", 
+          date: "2026-03-25", 
+          desc: "Lançamento dual-core inicial (Suporte Python + JS).",
+          snippet: "import Raegis from 'raegis';\n\nconst auditor = new Raegis.Auditor();\nawait auditor.audit('Prompt Test');"
+        }
       ]
     },
     contact: {
@@ -309,8 +331,18 @@ export const translations = {
     changelog: {
       title: "Changelog",
       items: [
-        { version: "2.0.0", date: "2026-03-29", desc: "The Diagnostic Overhaul: Drift, SHAP, Stress Test, Truth Anchor." },
-        { version: "1.0.0", date: "2026-03-25", desc: "Initial dual-core release (Python + JS Support)." }
+        { 
+          version: "2.0.0", 
+          date: "2026-03-29", 
+          desc: "The Diagnostic Overhaul: Drift, SHAP, Stress Test, Truth Anchor.",
+          snippet: "from raegis.drift import DriftMonitor # Monitoreo"
+        },
+        { 
+          version: "1.0.0", 
+          date: "2026-03-25", 
+          desc: "Initial dual-core release (Python + JS Support).",
+          snippet: "const auditor = new Raegis.Auditor();"
+        }
       ]
     },
     contact: {
@@ -340,6 +372,7 @@ export const translations = {
     },
     howItWorks: {
       title: "仕組み",
+      subtitle: "確率的環境における決定論的な信頼性を確保するために神経経路を監査します。",
       steps: [
         {
           title: "ストレステスト",
@@ -417,8 +450,18 @@ export const translations = {
     changelog: {
       title: "Changelog",
       items: [
-        { version: "2.0.0", date: "2026-03-29", desc: "The Diagnostic Overhaul: Drift, SHAP, Stress Test, Truth Anchor." },
-        { version: "1.0.0", date: "2026-03-25", desc: "Initial dual-core release (Python + JS Support)." }
+        { 
+          version: "2.0.0", 
+          date: "2026-03-29", 
+          desc: "The Diagnostic Overhaul: Drift, SHAP, Stress Test, Truth Anchor.",
+          snippet: "from raegis.drift import DriftMonitor"
+        },
+        { 
+          version: "1.0.0", 
+          date: "2026-03-25", 
+          desc: "Initial dual-core release (Python + JS Support).",
+          snippet: "const auditor = new Raegis.Auditor();"
+        }
       ]
     },
     contact: {
