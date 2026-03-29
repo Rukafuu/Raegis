@@ -157,7 +157,7 @@ export default function App() {
                     transition={{ delay: idx * 0.1 }}
                     className="flex gap-6 group"
                   >
-                    <div className="mt-1 flex-shrink-0">
+                    <div className="mt-1 shrink-0">
                       <div className="w-6 h-6 rounded-full border-2 border-cyan-neon/30 flex items-center justify-center group-hover:border-cyan-neon transition-colors duration-500">
                         <div className="w-2 h-2 rounded-full bg-cyan-neon shadow-[0_0_10px_rgba(0,243,255,0.8)]" />
                       </div>
