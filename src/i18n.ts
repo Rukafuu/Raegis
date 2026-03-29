@@ -9,33 +9,33 @@ export const translations = {
       github: "GitHub"
     },
     hero: {
-      title: "Raegis: The Stethoscope for Home-Grown LLMs",
-      subtitle: "Hallucination, bias, and entropy control for local models. Now with Native JS and TensorFlow.js support! No paid APIs.",
+      title: "Raegis: The Diagnostic Stethoscope for AI",
+      subtitle: "Monitoring, diagnostics & truth anchoring for local LLMs. Version 2.0 adds ML Drift monitoring, SHAP explanations, and Truth Anchors via Gemini.",
       ctaRepo: "Access Repository",
       ctaDocs: "Quick Start"
     },
     howItWorks: {
-      title: "How it Works",
+      title: "Diagnostic Pipeline",
       steps: [
         {
-          title: "Stress Test",
-          desc: "Prompt firing while varying model temperature to probe stability boundaries.",
-          badge: "INPUT"
+          title: "Adversarial Stress",
+          desc: "Firing perturbed prompts (typos, jailbreaks) to probe stability and safety boundaries.",
+          badge: "STRESS TEST"
         },
         {
-          title: "Raegis Guardian (JS+TF.js)",
-          desc: "Keras/TF.js Autoencoder detecting neural anomalies via reconstruction error analysis.",
-          badge: "ANALYSIS"
+          title: "Production Drift",
+          desc: "Continuously monitoring tabular stability (PSI) and F1-score degradation over time.",
+          badge: "MONITORING"
         },
         {
-          title: "Semantic Validation",
-          desc: "Scikit-learn and Pandas calculating Shannon Entropy and consistency metrics.",
-          badge: "METRICS"
+          title: "SHAP Diagnosis",
+          desc: "Explaining internal feature shifts to identify WHY the model's focus is changing.",
+          badge: "EXPLAINABILITY"
         },
         {
-          title: "Audited Response",
-          desc: "The library blocks hallucinations before they reach the end user.",
-          badge: "OUTPUT"
+          title: "Truth Anchor",
+          desc: "Gemini 1.5 acting as a 'Doctor' to audit local hallucination breaking points.",
+          badge: "VALIDATION"
         }
       ]
     },
@@ -50,13 +50,13 @@ export const translations = {
       ]
     },
     coreFeatures: {
-      title: "Core Features",
+      title: "Raegis v2.0 Elite Features",
       items: [
-        { title: "Streamlit Visual Dashboard", desc: "Track your model's behavioral heatmaps and boundaries in real-time.", tooltip: "Interactive UI for model auditing and stress-test visualization." },
-        { title: "Anchor Test (RAG Validation)", desc: "Measures semantic fidelity (cosine similarity via embeddings) of the model's output against a provided anchor context.", tooltip: "Ensures RAG outputs don't drift from source context." },
-        { title: "Whitebox Inspector", desc: "Extracts true token-level entropy using direct logprobs APIs (Ollama) or model tensors (HuggingFace transformers), yielding 100x faster insights than blackbox behavioral inference.", tooltip: "Deep neural inspection for expert users and researchers." },
-        { title: "Before/After Comparator", desc: "The ultimate MLOps tool for Fine-tuning validation. Calculates the Confidence Delta and the Personality Drift.", tooltip: "Essential for regression testing and drift detection." },
-        { title: "Guardian (Neural Autoencoder)", desc: "Detects anomalies in high-temperature outputs using TensorFlow/Keras (with Scikit-Learn as a lightweight fallback).", tooltip: "Real-time safety layer for high-temperature stochastic outputs." }
+        { title: "Drift Monitoring (PSI)", desc: "Track model stability across weeks of production traffic with Population Stability Index.", tooltip: "Detects feature distribution shifts before they impact accuracy." },
+        { title: "SHAP Explainability", desc: "Interactive dashboard showing how feature attribution shifted during a drift event.", tooltip: "Visual evidence of why the model stopped working as expected." },
+        { title: "Truth Anchor (Gemini)", desc: "Uses Gemini 1.5 as a 'Doctor' to provide factual diagnosis of local LLM responses.", tooltip: "Cross-model validation to eliminate confident hallucinations." },
+        { title: "Adversarial Stress Tester", desc: "Automated battery of tests (typos, negations, tone) to stress-test your prompts.", tooltip: "Benchmarks your model's robustness against real-world user noise." },
+        { title: "Guardian (Neural AE)", desc: "Detects neural anomalies (hallucinations) in high-temperature stochastic outputs.", tooltip: "Deep neural inspection for expert users and researchers." }
       ]
     },
     installation: {
@@ -84,10 +84,17 @@ export const translations = {
     architecture: {
       title: "Open Source Architecture",
       items: [
-        "auditor.py orchestrates asynchronous parallel collection",
-        "src/raegis/Raegis.ts native port of the heartbeat logic",
-        "src/raegis/RaegisServer.ts standalone JS API service",
-        "core/guardian.py trains the unsupervised anomaly autoencoder on-the-fly"
+        "python/raegis/drift/ ML drift monitoring module",
+        "python/raegis/core/doctor.py gemini truth anchor",
+        "javascript/src/raegis/ Raegis-JS observer & bridge",
+        "python/raegis/stress_test.py adversarial benchmarking"
+      ]
+    },
+    changelog: {
+      title: "Changelog",
+      items: [
+        { version: "2.0.0", date: "2026-03-29", desc: "The Diagnostic Overhaul: Drift, SHAP, Stress Test, Truth Anchor." },
+        { version: "1.0.0", date: "2026-03-25", desc: "Initial dual-core release (Python + JS Support)." }
       ]
     },
     contact: {
@@ -110,33 +117,33 @@ export const translations = {
       github: "GitHub"
     },
     hero: {
-      title: "Raegis: O Estetoscópio para LLMs Caseiros",
-      subtitle: "Controle de alucinação, viés e entropia. Agora com suporte nativo a JS e TensorFlow.js! Privacy-first, sem APIs pagas.",
+      title: "Raegis: O Estetoscópio de Diagnóstico para IA",
+      subtitle: "Monitoramento, diagnósticos e ancoragem de verdade para LLMs locais. A v2.0 adiciona Drift, SHAP e Truth Anchors via Gemini.",
       ctaRepo: "Acessar Repositório",
       ctaDocs: "Como Começar"
     },
     howItWorks: {
-      title: "Como Funciona",
+      title: "Pipeline de Diagnóstico",
       steps: [
         {
-          title: "Stress Test",
-          desc: "Disparo de prompts variando a temperatura do modelo para sondar limites de estabilidade.",
-          badge: "INPUT"
+          title: "Stress Adversarial",
+          desc: "Disparo de prompts perturbados (erros, jailbreaks) para sondar limites de estabilidade e segurança.",
+          badge: "STRESS TEST"
         },
         {
-          title: "Raegis Guardian (JS+TF.js)",
-          desc: "Autoencoder Neural (TensorFlow.js) detectando anomalias via erro de reconstrução local.",
-          badge: "ANÁLISE"
+          title: "Drift de Produção",
+          desc: "Monitoramento contínuo da estabilidade tabular (PSI) e degradação do F1-score no tempo.",
+          badge: "MONITORAMENTO"
         },
         {
-          title: "Validação Semântica",
-          desc: "Scikit-learn e Pandas calculando Entropia de Shannon e métricas de consistência.",
-          badge: "MÉTRICAS"
+          title: "Diagnóstico SHAP",
+          desc: "Explicação dos desvios internos das features para identificar POR QUE o foco do modelo mudou.",
+          badge: "EXPLICABILIDADE"
         },
         {
-          title: "Resposta Auditada",
-          desc: "A lib bloqueia a alucinação antes de chegar ao usuário final.",
-          badge: "OUTPUT"
+          title: "Truth Anchor",
+          desc: "Gemini 1.5 agindo como o 'Doutor' para auditar pontos de ruptura de alucinação local.",
+          badge: "VALIDAÇÃO"
         }
       ]
     },
@@ -151,13 +158,13 @@ export const translations = {
       ]
     },
     coreFeatures: {
-      title: "Recursos Principais",
+      title: "Recursos de Elite v2.0",
       items: [
-        { title: "Dashboard Visual Streamlit", desc: "Acompanhe os heatmaps e limites comportamentais do seu modelo em tempo real.", tooltip: "Interface interativa para auditoria de modelos e visualização de testes de estresse." },
-        { title: "Anchor Test (Validação RAG)", desc: "Mede a fidelidade semântica (similaridade de cosseno via embeddings) da saída do modelo em relação a um contexto de âncora fornecido.", tooltip: "Garante que as saídas do RAG não se desviem do contexto de origem." },
-        { title: "Inspetor Whitebox", desc: "Extrai a entropia real no nível do token usando APIs diretas de logprobs (Ollama) ou tensores de modelo (HuggingFace transformers), gerando insights 100x mais rápidos do que a inferência comportamental de caixa preta.", tooltip: "Inspeção neural profunda para usuários especialistas e pesquisadores." },
-        { title: "Comparador Antes/Depois", desc: "A ferramenta definitiva de MLOps para validação de Fine-tuning. Calcula o Delta de Confiança e o Desvio de Personalidade.", tooltip: "Essencial para testes de regressão e detecção de desvios." },
-        { title: "Guardian (Autoencoder Neural)", desc: "Detecta anomalias em saídas de alta temperatura usando TensorFlow/Keras (com Scikit-Learn como um fallback leve).", tooltip: "Camada de segurança em tempo real para saídas estocásticas de alta temperatura." }
+        { title: "Monitoramento de Drift", desc: "Acompanhe a estabilidade das features com o Population Stability Index (PSI).", tooltip: "Detecta mudanças na distribuição dos dados antes que impactem a acurácia." },
+        { title: "Explicabilidade SHAP", desc: "Dashboard interativo mostrando como o peso das features mudou durante um evento de drift.", tooltip: "Evidência visual de por que o modelo parou de funcionar como esperado." },
+        { title: "Truth Anchor (Gemini)", desc: "Usa o Gemini 1.5 como o 'Doutor' para fornecer diagnósticos factuais de respostas locais.", tooltip: "Validação cross-model para eliminar alucinações confiantes." },
+        { title: "Stress Tester Adversarial", desc: "Bateria automatizada de testes (erros, negação, tom) para testar seus prompts no limite.", tooltip: "Mede a resiliência do seu modelo contra ruído do usuário real." },
+        { title: "Guardian (Neural AE)", desc: "Detecta anomalias neurais (alucinações) em saídas estocásticas de alta temperatura.", tooltip: "Inspeção neural profunda para usuários especialistas e pesquisadores." }
       ]
     },
     installation: {
@@ -185,10 +192,17 @@ export const translations = {
     architecture: {
       title: "Arquitetura de Código Aberto",
       items: [
-        "auditor.py orquestra a coleta paralela assíncrona",
-        "src/raegis/Raegis.ts port nativo da lógica do protocolo",
-        "src/raegis/RaegisServer.ts serviço de API JS independente",
-        "core/guardian.py treina o autoencoder de anomalia não supervisionado on-the-fly"
+        "python/raegis/drift/ módulo de monitoramento de drift",
+        "python/raegis/core/doctor.py âncora de verdade gemini",
+        "javascript/src/raegis/ observer & bridge para Raegis-JS",
+        "python/raegis/stress_test.py benchmarking adversarial"
+      ]
+    },
+    changelog: {
+      title: "Changelog",
+      items: [
+        { version: "2.0.0", date: "2026-03-29", desc: "Overhaul de Diagnósticos: Drift, SHAP, Stress Test, Truth Anchor." },
+        { version: "1.0.0", date: "2026-03-25", desc: "Lançamento dual-core inicial (Suporte Python + JS)." }
       ]
     },
     contact: {

@@ -70,8 +70,8 @@ export default function App() {
             </div>
           </motion.div>
 
-          <div className="hidden md:flex items-center gap-10">
-            <div className="flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-12 ml-6">
+            <div className="flex items-center gap-10">
               <a href="#how-it-works" className="text-xs font-black text-slate-500 hover:text-cyan-neon transition-all uppercase tracking-widest hover:scale-110 active:scale-95">
                 {t.nav.howItWorks}
               </a>
@@ -250,6 +250,38 @@ export default function App() {
         </section>
 
         <Installation t={t} activeCore={activeCore} setActiveCore={setActiveCore} />
+
+        {/* Changelog Section */}
+        <section className="max-w-7xl mx-auto px-6 py-32 border-t border-white/5">
+           <div className="flex items-center gap-4 mb-16">
+              <div className="w-12 h-12 bg-cyan-neon/10 rounded-2xl flex items-center justify-center border border-cyan-neon/20">
+                 <Activity className="w-6 h-6 text-cyan-neon" />
+              </div>
+              <h2 className="text-4xl font-black text-white tracking-tight uppercase">
+                 {t.changelog.title}
+              </h2>
+           </div>
+           <div className="grid grid-cols-1 gap-6">
+              {t.changelog.items.map((item: any, idx: number) => (
+                 <motion.div 
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.1 }}
+                    className="glass-morphism p-8 rounded-3xl border border-white/5 hover:border-cyan-neon/30 transition-all group"
+                 >
+                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                       <div className="flex items-center gap-4">
+                          <span className="text-2xl font-black text-white group-hover:text-cyan-neon transition-colors">v{item.version}</span>
+                          <span className="px-3 py-1 bg-white/5 rounded-full text-[10px] font-mono text-slate-500 uppercase tracking-widest">{item.date}</span>
+                       </div>
+                       <p className="text-slate-400 font-medium">{item.desc}</p>
+                    </div>
+                 </motion.div>
+              ))}
+           </div>
+        </section>
 
         {/* Architecture Large Card */}
         <section className="max-w-7xl mx-auto px-6 py-32 border-t border-white/5">
