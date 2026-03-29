@@ -11,6 +11,7 @@ import {
   ChevronDown,
   ChevronUp
 } from 'lucide-react';
+import { Analytics } from '@vercel/analytics/react';
 
 // Components
 import { Tooltip } from './components/Tooltip';
@@ -448,6 +449,7 @@ export default function App() {
            </div>
         </div>
       </footer>
+      <Analytics />
     </div>
   );
 }
