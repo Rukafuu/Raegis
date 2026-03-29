@@ -255,7 +255,7 @@ export default function App() {
         <Installation t={t} activeCore={activeCore} setActiveCore={setActiveCore} />
 
         {/* Changelog Section */}
-        <section className="max-w-7xl mx-auto px-6 py-32 border-t border-white/5">
+        <section id="changelog" className="max-w-7xl mx-auto px-6 py-32 border-t border-white/5">
            <div className="flex items-center gap-4 mb-16">
               <div className="w-12 h-12 bg-cyan-neon/10 rounded-2xl flex items-center justify-center border border-cyan-neon/20">
                  <Activity className="w-6 h-6 text-cyan-neon" />
@@ -365,7 +365,7 @@ export default function App() {
               <span className="text-2xl font-black text-white tracking-tighter">RAEGIS</span>
             </div>
             <p className="text-sm font-medium text-slate-500 leading-relaxed mb-8">
-              Open source medical-grade diagnostics for local language models. Secure, private, and deterministic.
+              {t.footer.description}
             </p>
             <div className="flex gap-4">
               <Tooltip content="GitHub" position="top">
@@ -393,15 +393,15 @@ export default function App() {
           
           <div className="grid grid-cols-2 gap-16 md:gap-32">
             <div className="flex flex-col gap-4">
-              <span className="text-[10px] font-mono font-black text-slate-600 uppercase tracking-widest underline decoration-cyan-neon/40 underline-offset-8">Resources</span>
+              <span className="text-[10px] font-mono font-black text-slate-600 uppercase tracking-widest underline decoration-cyan-neon/40 underline-offset-8">{t.footer.resources}</span>
               <a href="https://github.com/Rukafuu/Raegis" className="text-sm font-bold text-slate-400 hover:text-white transition-colors">GitHub</a>
               <a href="https://github.com/Rukafuu/Raegis/issues" className="text-sm font-bold text-slate-400 hover:text-white transition-colors">Issues</a>
-              <a href="#" className="text-sm font-bold text-slate-400 hover:text-white transition-colors">Release Notes</a>
+              <a href="#changelog" className="text-sm font-bold text-slate-400 hover:text-white transition-colors">{t.footer.releaseNotes}</a>
             </div>
             <div className="flex flex-col gap-4">
-              <span className="text-[10px] font-mono font-black text-slate-600 uppercase tracking-widest underline decoration-cyan-neon/40 underline-offset-8">Legals</span>
-              <a href="#" className="text-sm font-bold text-slate-400 hover:text-white transition-colors">Apache 2.0</a>
-              <a href="#" className="text-sm font-bold text-slate-400 hover:text-white transition-colors">Privacy Policy</a>
+              <span className="text-[10px] font-mono font-black text-slate-600 uppercase tracking-widest underline decoration-cyan-neon/40 underline-offset-8">{t.footer.legals}</span>
+              <a href="https://github.com/Rukafuu/Raegis/blob/main/LICENSE" className="text-sm font-bold text-slate-400 hover:text-white transition-colors">{t.footer.apache}</a>
+              <a href="#" className="text-sm font-bold text-slate-400 hover:text-white transition-colors">{t.footer.privacy}</a>
             </div>
           </div>
           

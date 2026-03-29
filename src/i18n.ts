@@ -117,7 +117,13 @@ export const translations = {
       success: "Message sent successfully!"
     },
     footer: {
-      builtBy: "Built by Lucas Frischeisen"
+      builtBy: "Built by Lucas Frischeisen",
+      description: "Open source medical-grade diagnostics for local language models. Secure, private, and deterministic.",
+      resources: "Resources",
+      legals: "Legals",
+      releaseNotes: "Release Notes",
+      apache: "Apache 2.0",
+      privacy: "Privacy Policy"
     }
   },
   pt: {
@@ -236,7 +242,13 @@ export const translations = {
       success: "Mensagem enviada com sucesso!"
     },
     footer: {
-      builtBy: "Criado por Lucas Frischeisen"
+      builtBy: "Criado por Lucas Frischeisen",
+      description: "Diagnósticos de nível médico em código aberto para modelos locais. Seguro, privado e determinístico.",
+      resources: "Recursos",
+      legals: "Jurídico",
+      releaseNotes: "Notas de Lançamento",
+      apache: "Apache 2.0",
+      privacy: "Política de Privacidade"
     }
   },
   es: {
@@ -354,7 +366,13 @@ export const translations = {
       success: "¡Mensaje enviado con éxito!"
     },
     footer: {
-      builtBy: "Desarrollado por Lucas Frischeisen"
+      builtBy: "Desarrollado por Lucas Frischeisen",
+      description: "Diagnóstico de grado médico en código abierto para modelos de lenguaje locales. Seguro, privado y determinista.",
+      resources: "Recursos",
+      legals: "Legales",
+      releaseNotes: "Notas de Versión",
+      apache: "Apache 2.0",
+      privacy: "Política de Privacidad"
     }
   },
   ja: {
@@ -473,7 +491,13 @@ export const translations = {
       success: "メッセージが正常に送信されました！"
     },
     footer: {
-      builtBy: "Lucas Frischeisen による開発"
+      builtBy: "Lucas Frischeisen による開発",
+      description: "ローカル言語モデルのためのオープンソースの医療グレード診断。安全、プライベート、そして決定論的。",
+      resources: "リソース",
+      legals: "法的事項",
+      releaseNotes: "リリースノート",
+      apache: "Apache 2.0",
+      privacy: "プライバシーポリシー"
     }
   }
 };
