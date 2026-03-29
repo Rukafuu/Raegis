@@ -26,7 +26,19 @@ export interface AnchorResult {
 }
 
 export interface DriftResult {
-  confidenceDelta: number;
-  personalityDrift: number;
-  significantChange: boolean;
+  week: number;
+  driftShare: number;
+  isAlert: boolean;
+  f1Score: number;
+  driftedFeatures: string[];
+}
+
+export interface DiagnosisResult {
+  isHallucination: boolean;
+  score: number;
+  clinicalReason: string;
+}
+
+export interface ObserverOptions {
+  apiUrl: string;
 }

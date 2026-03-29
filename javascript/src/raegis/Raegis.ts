@@ -1,7 +1,9 @@
 import { Auditor } from "./Auditor";
 import { Anchor } from "./Anchor";
 import { Guardian } from "./Guardian";
-import { AuditOptions, AuditResult, AnchorOptions, AnchorResult } from "./types";
+import { Doctor } from "./Doctor";
+import { Observer } from "./Observer";
+import { AuditOptions, AuditResult, AnchorOptions, AnchorResult, ObserverOptions } from "./types";
 
 /**
  * Raegis: The Stethoscope for LLMs (JS Version)
@@ -11,11 +13,15 @@ export class Raegis {
   public auditor: Auditor;
   public anchor: Anchor;
   public guardian: Guardian;
+  public doctor: Doctor;
+  public observer: Observer;
 
-  constructor(apiKey: string) {
+  constructor(apiKey: string, observerOptions?: ObserverOptions) {
     this.auditor = new Auditor(apiKey);
     this.anchor = new Anchor(apiKey);
     this.guardian = new Guardian();
+    this.doctor = new Doctor(apiKey);
+    this.observer = new Observer(observerOptions);
   }
 
   /**
