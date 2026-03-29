@@ -118,6 +118,7 @@ export const translations = {
     },
     footer: {
       builtBy: "Built by Lucas Frischeisen",
+      googleLab: "This project is being developed for testing in Google Web AI's AI labs. Tested by @jasonmayes (Jason Mayes).",
       description: "Open source medical-grade diagnostics for local language models. Secure, private, and deterministic.",
       resources: "Resources",
       legals: "Legals",
@@ -243,6 +244,7 @@ export const translations = {
     },
     footer: {
       builtBy: "Criado por Lucas Frischeisen",
+      googleLab: "Este projeto está sendo desenvolvido para os testes dos laboratórios de IA da Google Web AI. Testado por @jasonmayes (Jason Mayes).",
       description: "Diagnósticos de nível médico em código aberto para modelos locais. Seguro, privado e determinístico.",
       resources: "Recursos",
       legals: "Jurídico",
@@ -367,6 +369,7 @@ export const translations = {
     },
     footer: {
       builtBy: "Desarrollado por Lucas Frischeisen",
+      googleLab: "Este proyecto se está desarrollando para pruebas en los laboratorios de IA de Google Web AI. Probado por @jasonmayes (Jason Mayes).",
       description: "Diagnóstico de grado médico en código abierto para modelos de lenguaje locales. Seguro, privado y determinista.",
       resources: "Recursos",
       legals: "Legales",
@@ -492,6 +495,7 @@ export const translations = {
     },
     footer: {
       builtBy: "Lucas Frischeisen による開発",
+      googleLab: "このプロジェクトは Google Web AI の AI ラボでのテスト用に開発されています。テスター: @jasonmayes (Jason Mayes)。",
       description: "ローカル言語モデルのためのオープンソースの医療グレード診断。安全、プライベート、そして決定論的。",
       resources: "リソース",
       legals: "法的事項",
