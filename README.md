@@ -1,73 +1,92 @@
-# Raegis 🔬 `v0.1.3`
+# Raegis 🔬🩺 `v2.0.0 — The Diagnostic Overhaul`
 
-> **The stethoscope for your local LLMs** — behavioral diagnostics, hallucination detection, and RAG / Fine-tuning validation.
+> **The ultimate stethoscope for AI systems** — behavioral diagnostics, production drift monitoring, adversarial stress testing, and Truth Anchoring.
 
-Raegis tests your model by running the same prompt across a temperature ramp (e.g., `0.0` to `1.5`), measuring internal consistency (TF-IDF/Cosine) and vocabulary diversity (Shannon Entropy). With this data, it fingerprints the model’s personality, defines the **hallucination breaking point**, audits **RAG pipelines**, and compares **Personality Drift** after fine-tuning.
-
-## 📐 Dual-Core Architecture
-
-Raegis provides two parallel but semantically equivalent implementations:
-
-| Feature | Python Core (`pip`) | JavaScript Core (`npm`) |
-| :--- | :--- | :--- |
-| **Logic** | Asynchronous `aiohttp` | Native `fetch` / `Google GenAI` |
-| **Neural** | Keras / TensorFlow | TensorFlow.js (TF.js) |
-| **Visualization** | Streamlit Dashboard | React / Vite Dashboard |
-| **Usage** | Production Pipelines | Demos, Edge & Web Apps |
+Raegis is an end-to-end audit protocol designed to ensure AI safety and reliability. Version 2.0 expands beyond simple LLM temperature checks into a full-scale **MLOps Observability** platform. It now monitors **tabular model degradation**, explains **data drift via SHAP**, and uses **Gemini 1.5** as a "Truth Anchor" for factual validation.
 
 ---
 
-## Installation & Setup
+## 🌟 What's New in v2.0 (The Heist)
 
-### 🐍 Python (Standard Core)
+| Feature | Description | Status |
+| :--- | :--- | :--- |
+| **📉 ML Drift Monitor** | Continuous monitoring for tabular models (XGBoost, etc.) using PSI and Performance metrics. | **New** |
+| **📊 Explainable AI (SHAP)** | Interactive SHAP analysis to diagnose *why* a model is drifting or failing. | **New** |
+| **🧪 Stress Test Engine** | Adversarial prompt auditing: typos, negations, and jailbreak resilience scores. | **New** |
+| **🏥 Raegis Doctor** | LLM-as-a-Judge using Gemini 1.5 Pro/Flash to audit local models (Llama/Mistral). | **New** |
+| **💎 Premium Dashboard** | High-end Dark Mode UI built with Vanilla JS + Plotly for instant, interactive insights. | **New** |
+
+---
+
+## 🛠 Installation
+
+Raegis 2.0 follows a modular structure. You can install only what you need.
+
+### 🐍 Python Core
 ```bash
 cd python
-pip install -r requirements.txt
-# Dashboard
-python -m streamlit run app.py
-```
+# Basic installation
+pip install -e .
 
-### ⚡ JavaScript / TypeScript (Native Core)
-```bash
-cd javascript
-npm install
-# Audit Server
-npx tsx src/raegis/RaegisServer.ts
+# Full MLOps + Drift + Diagnostic stack (Recommended)
+pip install -e .[full]
 ```
 
 ---
 
-## 🚀 Usage (Python)
+## 🚀 Advanced Usage
 
-### 1. Behavioral Diagnostics
+### 1. ML Drift & Monitoring (The Fraud Monitor)
+Monitor a model's stability over weeks of production data.
+```bash
+# Execute the 12-week simulation pipeline and start the Dashboard
+python -m raegis.drift_monitor
+```
+> Access the interactive dashboard at: `http://localhost:8000/dashboard/`
+
+### 2. Adversarial Stress Testing
+Test if your prompt is robust enough to survive real-world typos and attacks.
 ```python
 from raegis import Auditor
-auditor = Auditor(model="ollama/llama3.2")
-report = auditor.audit(prompt="...", depth=3)
+from raegis.stress_test import StressTester
+
+auditor = Auditor(model="llama3.2")
+tester = StressTester(auditor)
+
+# Run a battery of 6 different adversarial perturbations
+results = tester.run_stress_test("Explain the laws of thermodynamics.")
+print(results)
 ```
 
-### 2. LLM-as-a-Judge
+### 3. The Truth Anchor (Raegis Doctor)
+Use a powerful "Anchor" model to verify the clinical accuracy of a local response.
 ```python
-results = auditor.judge_rag(query, contexts, response)
+# Requires GEMINI_API_KEY in .env
+diagnosis = auditor.diagnose(
+    question="What is the capital of Mars?", 
+    response="The capital of Mars is Elon City."
+)
+# Returns: { "is_hallucination": True, "score": 0.98, "clinical_reason": "Mars has no capital." }
 ```
 
 ---
 
-## 🚀 Usage (JavaScript / TypeScript)
+## 🗞 Changelog
 
-### 1. Library Usage
-```typescript
-import { Raegis } from './javascript/src/raegis/Raegis';
-const raegis = new Raegis(API_KEY);
-const audit = await raegis.fullAudit({ prompt: "..." });
-```
+### [2.0.0] — 2026-03-29 (The Diagnostic Overhaul)
+- **Added**: `raegis.drift` module for MLOps monitoring.
+- **Added**: `DriftAuditor` with PSI (Population Stability Index) and Classification presets.
+- **Added**: `FraudSimulator` for standard drift benchmarking.
+- **Added**: `SHAP` integration for feature importance attribution in the dashboard.
+- **Added**: `StressTester` for adversarial prompt engineering tests.
+- **Added**: `RaegisDoctor` serving as a Truth Anchor via Gemini 1.5.
+- **Internal**: Transitioned dashboard from Streamlit to a performance-first **FastAPI + Vanilla JS** stack.
+
+### [0.1.3] — 2026-03-25
+- Initial dual-core alpha (Python + JS).
+- Basic temperature consistency and hallucination detection via Autoencoders.
 
 ---
-
-## Open Source Architecture
-
-- `python/raegis/`: Core Python logic and Streamlit app.
-- `javascript/src/raegis/`: Core TypeScript logic and React website.
 
 ## License
 Apache License 2.0. Built by **Lucas Frischeisen**. [LinkedIn](https://linkedin.com/in/rukafuu)

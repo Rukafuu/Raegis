@@ -26,10 +26,26 @@ setup(
         "semantic": [
             "sentence-transformers>=2.6",
         ],
+        # pip install raegis[drift]
+        "drift": [
+            "evidently==0.4.15",
+            "xgboost>=2.0.0",
+            "imbalanced-learn>=0.12.0",
+            "fastapi>=0.110.0",
+            "uvicorn>=0.29.0",
+            "pyarrow>=15.0.0",
+            "shap>=0.45.0",
+            "google-generativeai>=0.5.0",
+        ],
         # pip install raegis[full]
         "full": [
             "tensorflow>=2.14",
             "sentence-transformers>=2.6",
+            "evidently==0.4.15",
+            "xgboost>=2.0.0",
+            "imbalanced-learn>=0.12.0",
+            "fastapi>=0.110.0",
+            "uvicorn>=0.29.0",
         ],
     },
     entry_points={

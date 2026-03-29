@@ -22,6 +22,7 @@ import requests
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from raegis.report import RaegisReport
+from raegis.core.doctor import RaegisDoctor
 
 # Lazy imports in methods to avoid crashing on import
 
@@ -187,6 +188,19 @@ class Auditor:
             "faithfulness": f_report,
             "contextual_precision": cp_score
         }
+
+    def diagnose(self, question: str, response: str) -> Dict[str, Any]:
+        """
+        Final clinical diagnosis of a response using an External Anchor Model (Gemini).
+        Requries GEMINI_API_KEY in environment.
+        """
+        try:
+            doctor = RaegisDoctor()
+            diagnosis = doctor.diagnose_hallucination(question, response)
+            print(f"[Raegis] Final Diagnosis: {'HALLUCINATION' if diagnosis.get('is_hallucination') else 'FACTUAL'}")
+            return diagnosis
+        except Exception as e:
+            return {"error": f"Doctor unreachable: {e}"}
 
     # ------------------------------------------------------------------
     # Dunder

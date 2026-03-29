@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  raegis-drift:
+    build: 
+      context: ./python
+      dockerfile: Dockerfile.drift
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./python:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: python -m raegis.drift_monitor

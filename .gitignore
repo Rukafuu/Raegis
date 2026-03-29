@@ -11,6 +11,7 @@ ENV/
 # Streamlit/Plots
 .streamlit/
 experiments/
+monitoring_results/
 
 # Package builds
 build/

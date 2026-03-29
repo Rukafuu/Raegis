@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raegis — Drift Observer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+    <style>
+        :root {
+            --bg-color: #0b0e14;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --accent-color: #00f2ff;
+            --alert-color: #ff3e3e;
+            --text-main: #e0e0e0;
+            --text-dim: #a0a0a0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Sidebar */
+        .sidebar {
+            width: 280px;
+            height: 100vh;
+            background: rgba(11, 14, 20, 0.8);
+            border-right: 1px solid var(--border-color);
+            position: fixed;
+            left: 0;
+            top: 0;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            backdrop-filter: blur(20px);
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: 'Outfit', sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 50px;
+            color: #fff;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .nav-item {
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            cursor: pointer;
+            color: var(--text-dim);
+            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-item:hover {
+            background: var(--card-bg);
+            color: #fff;
+        }
+
+        .nav-item.active {
+            background: rgba(0, 242, 255, 0.1);
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 280px;
+            padding: 40px;
+        }
+
+        .header {
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .title-group h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 32px;
+            margin: 0;
+        }
+
+        .title-group p {
+            color: var(--text-dim);
+            margin: 5px 0 0;
+        }
+
+        /* Cards Layout */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+            backdrop-filter: blur(10px);
+        }
+
+        .col-4 { grid-column: span 4; }
+        .col-8 { grid-column: span 8; }
+        .col-12 { grid-column: span 12; }
+
+        .stat-label { color: var(--text-dim); font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .stat-value { font-size: 36px; font-weight: 700; color: #fff; margin: 10px 0; }
+        .stat-trend { font-size: 14px; font-weight: 600; }
+        .trend-up { color: #3ef0ff; }
+        .trend-down { color: var(--alert-color); }
+
+        /* Chart Placeholder */
+        .chart-container {
+            height: 350px;
+            width: 100%;
+        }
+
+        #timeline-chart, #drift-radar {
+            height: 100%;
+            width: 100%;
+        }
+
+        .alert-panel {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .alert-item {
+            padding: 15px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .alert-badge {
+            width: 8px;
+            height: 8px;
+            background: var(--alert-color);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--alert-color);
+        }
+
+        .alert-content h4 { margin: 0; font-size: 15px; }
+        .alert-content p { margin: 5px 0 0; font-size: 13px; color: var(--text-dim); }
+
+        /* Status colors for the plots */
+        .status-stable { border-bottom: 3px solid #00f2ff; }
+        .status-drifted { border-bottom: 3px solid #ff3e3e; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fade { animation: fadeIn 0.6s ease-out forwards; }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">RAEGIS <span>OBSERVER</span></div>
+        <div class="nav-item active">Performance Timeline</div>
+        <div class="nav-item">Feature Stability</div>
+        <div class="nav-item">Reports History</div>
+        <div class="nav-item">System Alerts</div>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <div class="title-group animate-fade">
+                <h1>Fraud Detection Dashboard</h1>
+                <p>Monitoring 12 Weeks of Production Traffic — Fraud Classifier</p>
+            </div>
+            <div class="status-badge card" style="padding: 10px 20px;">
+                <span style="font-size: 12px; color: var(--text-dim);">SYSTEM STATUS</span>
+                <div style="font-weight: 700; color: var(--alert-color);">CRITICAL DRIFT DETECTED</div>
+            </div>
+        </div>
+
+        <div class="grid">
+            <!-- Weekly Stats Summary -->
+            <div class="card col-4 animate-fade" style="animation-delay: 0.1s;">
+                <div class="stat-label">Model F1-Score</div>
+                <div class="stat-value" id="curr-f1">0.00</div>
+                <div class="stat-trend trend-down">▼ 18.4% since Week 1</div>
+            </div>
+            <div class="card col-4 animate-fade" style="animation-delay: 0.2s;">
+                <div class="stat-label">Global Drift Share</div>
+                <div class="stat-value" id="curr-drift">0%</div>
+                <div class="stat-trend trend-down">▲ 42% features drifted</div>
+            </div>
+            <div class="card col-4 animate-fade" style="animation-delay: 0.3s;">
+                <div class="stat-label">Active Alerts</div>
+                <div class="stat-value" id="curr-alerts">0</div>
+                <div class="stat-trend trend-up">Critical: Week 8-12</div>
+            </div>
+
+            <!-- Plots -->
+            <div class="card col-8 animate-fade" style="animation-delay: 0.4s;">
+                <h3>Stability Timeline</h3>
+                <div class="chart-container">
+                    <div id="timeline-chart"></div>
+                </div>
+            </div>
+
+            <div class="card col-4 animate-fade" style="animation-delay: 0.5s;">
+                <h3>Active Alerts Panel</h3>
+                <div class="alert-panel" id="alert-list">
+                    <!-- Alerts populated by JS -->
+                </div>
+            </div>
+
+            <div class="card col-6 animate-fade" style="animation-delay: 0.6s;">
+                <h3>Baseline vs Current Importance (SHAP)</h3>
+                <div class="chart-container">
+                    <div id="shap-chart" style="height: 100%; width: 100%;"></div>
+                </div>
+                <p id="shap-info" style="font-size: 11px; color: var(--text-dim); text-align: center; margin-top: 10px;">Select a week in the timeline to compare.</p>
+            </div>
+
+            <div class="card col-6 animate-fade" style="animation-delay: 0.6s;">
+                <h3>Feature Drift Heatmap (PSI Analysis)</h3>
+                <div class="chart-container" style="height: 350px;">
+                    <div id="drift-heatmap" style="height: 100%; width: 100%;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/dashboard.js"></script>
+</body>
+</html>
