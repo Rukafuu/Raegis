@@ -1,5 +1,10 @@
 # Raegis `v0.1.3`
 
+> [!IMPORTANT]
+> **Google Web AI Labs // Testing Protocol**
+> This project is being developed for testing in Google Web AI's AI labs.
+> Tested and validated by **[@jasonmayes](https://github.com/jasonmayes)** (Google Web AI).
+
 > **The stethoscope for your local LLMs** — behavioral diagnostics, hallucination detection, and RAG / Fine-tuning validation.
 
 Raegis tests your model by running the same prompt across a temperature ramp (e.g., `0.0` to `1.5`), measuring internal consistency (TF-IDF/Cosine) and vocabulary diversity (Shannon Entropy). With this data, it fingerprints the model’s personality, defines the **hallucination breaking point**, audits **RAG pipelines**, and compares **Personality Drift** after fine-tuning.

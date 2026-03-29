@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "../Lira"
+		},
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"files.readonlyInclude": {
+			"{**/.c4z/.extsrcs/*.PROTSYM.cbl,**/.c4z/.extsrcs/*.PROTSYM.listing}": true
+		},
+		"powershell.cwd": "Documents"
+	}
+}
