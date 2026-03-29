@@ -34,7 +34,17 @@ pip install -e .[full]
 
 ---
 
-## 🚀 Advanced Usage
+## 🔬 Advanced Diagnostics
+
+Raegis v2+ implements state-of-the-art metrics for high-stakes AI auditing:
+
+- **Semantic Entropy (Semantic Clustering):** No more "exact match" penalties. We group responses by meaning similarity (Cosine > 0.85) to find true uncertainty.
+- **Behavioral Drift (T=0 Baseline):** Measures how much a model deviates from its own deterministic baseline (Temperature 0.0) as stochasticity increases.
+- **Rupture Point Analysis:** Identifies the exact thermal point where a model's logic breaks and hallucinations begin.
+
+---
+
+## Open Source Architecture
 
 ### 1. ML Drift & Monitoring (The Fraud Monitor)
 Monitor a model's stability over weeks of production data.

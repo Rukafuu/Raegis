@@ -52,8 +52,8 @@ class Comparator:
         if isinstance(after, str):
             after = RaegisReport.load(after)
 
-        df_b = baseline.df_analise.set_index("temperature")
-        df_a = after.df_analise.set_index("temperature")
+        df_b = baseline.df_analysis.set_index("temperature")
+        df_a = after.df_analysis.set_index("temperature")
 
         # Use common temperatures
         common_temps = df_b.index.intersection(df_a.index)

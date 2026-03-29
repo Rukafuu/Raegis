@@ -83,7 +83,7 @@ class RaegisReport:
         """Saves the report to JSON. Returns the saved path."""
         os.makedirs(os.path.dirname(os.path.abspath(path)), exist_ok=True)
         payload = {
-            "raegis_version": "0.1.0",
+            "raegis_version": "2.1.0",
             "created_at":     self.created_at,
             "model":          self.model,
             "prompt":         self.prompt,
@@ -132,14 +132,16 @@ class RaegisReport:
     # ------------------------------------------------------------------
 
     def summary(self) -> str:
+        avg_delta = self.df_analysis["stability_delta"].mean() if "stability_delta" in self.df_analysis.columns else 0.0
         lines = [
             f"[Raegis Report]",
-            f"  Model        : {self.model}",
-            f"  Prompt       : {self.prompt[:60]}...",
-            f"  Created at   : {self.created_at}",
-            f"  Best temp    : {getattr(self, 'best_temperature',  'N/A')}",
-            f"  Worst temp   : {getattr(self, 'worst_temperature', 'N/A')}",
-            f"  Rupture      : {getattr(self, 'rupture_point',     'N/A')}",
+            f"  Model         : {self.model}",
+            f"  Prompt        : {self.prompt[:60]}...",
+            f"  Created at    : {self.created_at}",
+            f"  Best temp     : {getattr(self, 'best_temperature',  'N/A')}",
+            f"  Worst temp    : {getattr(self, 'worst_temperature', 'N/A')}",
+            f"  Rupture       : {getattr(self, 'rupture_point',     'N/A')}",
+            f"  Avg Stability : {1.0 - avg_delta:.2%}",
         ]
         return "\n".join(lines)
 

@@ -15,7 +15,7 @@ from .report             import RaegisReport, AnchorReport, DeltaReport
 from .core.inspector     import WhiteboxInspector
 from .core.judge         import RaegisJudge
 
-__version__ = "0.1.2"
+__version__ = "2.1.0"
 
 __all__ = [
     "Auditor",

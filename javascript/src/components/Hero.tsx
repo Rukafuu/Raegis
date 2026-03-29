@@ -1,0 +1,67 @@
+import { motion } from 'motion/react';
+import { Github, Terminal } from 'lucide-react';
+import { TerminalSimulation } from './TerminalSimulation';
+import { Tooltip } from './Tooltip';
+
+interface HeroProps {
+  t: any;
+}
+
+export const Hero = ({ t }: HeroProps) => {
+  return (
+    <section className="max-w-7xl mx-auto px-6 pb-24 text-center">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-neon/10 border border-cyan-neon/30 mb-8 backdrop-blur-md animate-float">
+          <span className="w-2.5 h-2.5 rounded-full bg-cyan-neon shadow-[0_0_10px_rgba(0,243,255,0.8)] animate-pulse" />
+          <span className="text-[11px] font-mono font-black text-cyan-neon tracking-[0.2em] uppercase">
+            v1.1.0-alpha // neural_audit_ready
+          </span>
+        </div>
+        
+        <h1 className="text-6xl md:text-8xl font-black tracking-tight text-white mb-8 leading-[1.05] selection:bg-cyan-neon selection:text-slate-950">
+          {t.hero.title.split(':').map((part: string, i: number) => (
+            <span key={i} className={i === 1 ? "text-cyan-neon block md:inline neon-text-glow" : ""}>
+              {part}{i === 0 ? ':' : ''} 
+            </span>
+          ))}
+        </h1>
+        
+        <p className="max-w-3xl mx-auto text-xl md:text-2xl text-slate-400 mb-16 font-medium leading-relaxed">
+          {t.hero.subtitle}
+        </p>
+
+        <TerminalSimulation />
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-20">
+          <Tooltip content="https://github.com/Rukafuu/Raegis" position="top">
+            <motion.a 
+              href="https://github.com/Rukafuu/Raegis"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(0,243,255,0.3)" }}
+              whileTap={{ scale: 0.95 }}
+              className="w-full sm:w-auto px-10 py-5 bg-cyan-neon text-slate-950 rounded-2xl font-black flex items-center justify-center gap-3 transition-colors text-lg"
+            >
+              <Github className="w-6 h-6" />
+              <span className="uppercase tracking-tighter">{t.hero.ctaRepo}</span>
+            </motion.a>
+          </Tooltip>
+          
+          <motion.a 
+            href="#installation"
+            whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.1)" }}
+            whileTap={{ scale: 0.95 }}
+            className="w-full sm:w-auto px-10 py-5 bg-white/5 text-white border border-white/10 rounded-2xl font-black flex items-center justify-center gap-3 transition-all text-lg backdrop-blur-sm"
+          >
+            <Terminal className="w-6 h-6 text-slate-400" />
+            <span className="uppercase tracking-tighter">{t.hero.ctaDocs}</span>
+          </motion.a>
+        </div>
+      </motion.div>
+    </section>
+  );
+};
