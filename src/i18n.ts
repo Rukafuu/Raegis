@@ -284,18 +284,33 @@ export const translations = {
       title: "Uso de la API de Python",
       sections: [
         { title: "1. Diagnóstico de Comportamiento", desc: "Auditorías de 0.0 a 1.5, generando N muestras por temperatura", tooltip: "Perfilado de estabilidad automatizado en rampas de temperatura." },
-        { title: "2. Prueba de Anclaje (Validación RAG)", desc: "Mide la fidelidad entre la salida del modelo y la verdad fundamental recuperada.", tooltip: "Verificación de fidelidad semántica para pipelines RAG." },
+        { title: "2. Prueba de Anclaje (Validación RAG)", desc: "Mide la fidelidad entre la saída del modelo y la verdad fundamental recuperada.", tooltip: "Verificación de fidelidad semántica para pipelines RAG." },
         { title: "3. Validación de Fine-tuning", desc: "¿Su modelo base se degradó significativamente después de entrenar ese LoRA de 6 horas?", tooltip: "Detecta caídas de rendimiento y sobreajuste después del ajuste fino." },
         { title: "4. Inspector de caja blanca / caja gris", desc: "En lugar de generar múltiples respuestas de texto e compararlas (inferencia de caja negra), el Inspector accede directamente a las probabilidades de token internas del LLM en una sola pasada.", tooltip: "Acceso directo a las probabilidades de token para una auditoría 100 veces más rápida." }
       ]
     },
+    jsUsage: {
+      title: "API de JavaScript / Node.js",
+      sections: [
+        { title: "1. Port Nativo", desc: "Implementación nativa en TypeScript sin dependencias de Python.", tooltip: "Ligero y de alto rendimiento." },
+        { title: "2. Integración TensorFlow.js", desc: "Ejecute detección de anomalías neuronales directamente en el navegador o Node.js.", tooltip: "Auditoría acelerada por hardware vía TF.js." },
+        { title: "3. Raegis Server", desc: "Ejecute como una API REST independiente para sus demos de Gemma ou Llama.", tooltip: "Servicio de backend listo para usar." }
+      ]
+    },
     architecture: {
-      title: "Arquitectura de Código Aberto",
+      title: "Arquitectura de Código Abierto",
       items: [
-        "auditor.py orquestra la recolección paralela assíncrona",
-        "anchor.py maneja la lógica de evaluación de RAG",
-        "comparator.py realiza análisis de desvío antes/después",
-        "core/guardian.py entrena el autoencoder de anomalías no supervisado sobre la marcha"
+        "python/raegis/drift/ módulo de monitoreo de drift",
+        "python/raegis/core/doctor.py gemini truth anchor",
+        "javascript/src/raegis/ observer & bridge para Raegis-JS",
+        "python/raegis/stress_test.py benchmarking adversarial"
+      ]
+    },
+    changelog: {
+      title: "Changelog",
+      items: [
+        { version: "2.0.0", date: "2026-03-29", desc: "The Diagnostic Overhaul: Drift, SHAP, Stress Test, Truth Anchor." },
+        { version: "1.0.0", date: "2026-03-25", desc: "Initial dual-core release (Python + JS Support)." }
       ]
     },
     contact: {
@@ -382,13 +397,28 @@ export const translations = {
         { title: "4. ホワイトボックス / グレーボックスインスペクター", desc: "複数のテキスト応答を生成して比較する（ブラックボックス推論）代わりに、インスペクターは1回のフォワードパスでLLMの内部トークン確率に直接アクセスします。", tooltip: "100倍速い監査のためのトークン確率への直接アクセス。" }
       ]
     },
+    jsUsage: {
+      title: "JavaScript / Node.js API",
+      sections: [
+        { title: "1. ネイティブ移植", desc: "Pythonに依存しないネイティブTypeScript実装。", tooltip: "軽量で高性能。" },
+        { title: "2. TensorFlow.js 統合", desc: "ブラウザまたはNode.jsで直接ニューラル異常検出を実行します。", tooltip: "TF.jsによるハードウェア加速監査。" },
+        { title: "3. Raegis Server", desc: "GemmaやLlamaのデモ用にスタンドアロンのREST APIとして実行します。", tooltip: "すぐに使えるバックエンドサービス。" }
+      ]
+    },
     architecture: {
       title: "オープンソースアーキテクチャ",
       items: [
-        "auditor.py が非同期並列収集をオーケストレートします",
-        "anchor.py がRAG評価ロジックを処理します",
-        "comparator.py が前後ドリフト分析を実行します",
-        "core/guardian.py が監視なしの異常オートエンコーダーをオンザフライでトレーニングします"
+        "python/raegis/drift/ ドリフトモニタリングモジュール",
+        "python/raegis/core/doctor.py gemini真実アンカー",
+        "javascript/src/raegis/ Raegis-JSオブザーバー&ブリッジ",
+        "python/raegis/stress_test.py 敵対的ベンチマーク"
+      ]
+    },
+    changelog: {
+      title: "Changelog",
+      items: [
+        { version: "2.0.0", date: "2026-03-29", desc: "The Diagnostic Overhaul: Drift, SHAP, Stress Test, Truth Anchor." },
+        { version: "1.0.0", date: "2026-03-25", desc: "Initial dual-core release (Python + JS Support)." }
       ]
     },
     contact: {
